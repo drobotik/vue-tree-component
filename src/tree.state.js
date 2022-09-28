@@ -36,8 +36,8 @@ export const actions = {
     add({commit}, payload) {
         commit('add', payload)
     },
-    toggle({commit}, name) {
-        commit('toggle', name)
+    expand({commit}, name) {
+        commit('expand', name)
     },
     select({commit}, name) {
         commit('deselectAll')
@@ -59,7 +59,7 @@ export const mutations = {
         })
     },
 
-    toggle(state, name) {
+    expand(state, name) {
         search(state.tree, name, (parent) => {
             parent.properties.expanded = !parent.properties.expanded
         })

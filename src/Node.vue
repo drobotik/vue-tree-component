@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     expand() {
-      this.$store.dispatch('toggle', this.attributes.name)
+      this.$store.dispatch('expand', this.attributes.name)
     }
   }
 }

@@ -58,10 +58,10 @@ describe('mutations', () => {
         expect(state.tree).toMatchSnapshot();
     })
 
-    it('toggle entity', () => {
-        mutations.toggle(state, "Adventure")
+    it('expand entity', () => {
+        mutations.expand(state, "Adventure")
         expect(state.tree[0].children[2].properties.expanded).toBeTruthy();
-        mutations.toggle(state, "Adventure")
+        mutations.expand(state, "Adventure")
         expect(state.tree[0].children[2].properties.expanded).toBeFalsy();
     })
 
@@ -112,8 +112,8 @@ describe("actions", () => {
 
     it("toggle entity", done => {
         const name = "Test"
-        testAction(actions.toggle, name, state, [
-            { type: 'toggle', payload: name },
+        testAction(actions.expand, name, state, [
+            { type: 'expand', payload: name },
         ], done)
     })
 

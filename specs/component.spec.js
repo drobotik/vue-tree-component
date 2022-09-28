@@ -1,17 +1,19 @@
 import { mount } from '@vue/test-utils';
 import component from '@/Node.vue'
 import data from './data.json';
-import {store} from "@/tree.state";
-
+const $store = {
+    dispatch: jest.fn()
+}
 describe( "component", () => {
+
 
     it("default properties", () => {
         const node = mount(component)
         expect(node.props()).toMatchSnapshot()
     })
 
-    it('toggle', async () => {
-        const node = mount(component, {global: {plugins: [store]}})
+    it('expand classes', async () => {
+        const node = mount(component, {global: {mocks: { $store }}})
         expect(node.find('.arrow').classes()).toContain('arrow-right')
         expect(node.find('.children').exists()).toBeFalsy()
         await node.setProps({ properties: { expanded: true }, attributes: { name: 'test'}, children: [] })
@@ -22,6 +24,21 @@ describe( "component", () => {
         expect(node.find('.children').exists()).toBeFalsy()
         expect(node.find('.arrow').classes('arrow-right')).toBeTruthy()
         expect(node.find('.arrow').classes('arrow-down')).toBeFalsy()
+    })
+
+    it('expand event', async() => {
+        const node = mount(component, {global: {mocks: { $store }}})
+        node.vm.expand = jest.fn();
+        await node.find('.arrow').trigger('click')
+        expect(node.vm.expand).toHaveBeenCalledTimes(1);
+    })
+
+    it('expand method', async() => {
+        const node = mount(component, {global: {mocks: { $store }}})
+        await node.setProps({ attributes: { name: 'the name'} })
+        node.vm.expand()
+        expect($store.dispatch).toHaveBeenCalledTimes(1);
+        expect($store.dispatch).toHaveBeenCalledWith('expand', 'the name')
     })
 
     it("render data", () => {
