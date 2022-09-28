@@ -17,11 +17,15 @@ exports[`component render data 1`] = `
   <div><span class="arrow arrow-down"></span><span>Books</span></div>
   <div class="children">
     <div>
-      <div><span class="arrow arrow-right"></span><span>Fantastic</span></div>
+      <div>
+        <!--v-if--><span>Fantastic</span>
+      </div>
       <!--v-if-->
     </div>
     <div>
-      <div><span class="arrow arrow-right"></span><span>Fantasy</span></div>
+      <div>
+        <!--v-if--><span>Fantasy</span>
+      </div>
       <!--v-if-->
     </div>
     <div>

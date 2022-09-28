@@ -1,7 +1,7 @@
 <template>
 <div>
   <div>
-    <span :class="arrowClass" @click="expand"></span>
+    <span v-if="children.length > 0" :class="arrowClass" @click="expand"></span>
     <span v-text="attributes.name"></span>
   </div>
   <div v-if="this.properties.expanded" class="children">
