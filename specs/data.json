@@ -1,0 +1,82 @@
+[
+  {
+    "attributes": {
+      "name": "Books"
+    },
+    "properties": {
+      "expanded": true,
+      "selected": false
+    },
+    "children": [
+      {
+        "attributes": {
+          "name": "Fantastic"
+        },
+        "properties": {
+          "expanded": false,
+          "selected": false
+        },
+        "children":  []
+      },
+      {
+        "attributes": {"name": "Fantasy"},
+        "properties": {
+          "expanded": false,
+          "selected": false
+        },
+        "children":  []},
+      {
+        "attributes": {
+          "name": "Adventure"
+        },
+        "properties": {
+          "expanded": false,
+          "selected": false
+        },
+        "children":  [
+          {
+            "attributes": {
+              "name": "Miguel de Cervantes"
+            },
+            "properties": {
+              "expanded": false,
+              "selected": false
+            },
+            "children":  [
+              {
+                "attributes": {
+                  "name": "Dom Quixote"
+                },
+                "properties": {
+                  "expanded": false,
+                  "selected": false
+                },
+                "children":  []
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "name": "Alexandre Dumas"
+            },
+            "properties": {
+              "expanded": false,
+              "selected": false
+            },
+            "children":  []
+          },
+          {
+            "attributes": {
+              "name": "Louis Stevenson"
+            },
+            "properties": {
+              "expanded": false,
+              "selected": false
+            },
+            "children":  []
+          }
+        ]
+      }
+    ]
+  }
+]

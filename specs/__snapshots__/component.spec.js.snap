@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component default properties 1`] = `
+Object {
+  "attributes": Object {},
+  "children": Array [],
+  "depth": 0,
+  "properties": Object {
+    "expanded": false,
+    "selected": false,
+  },
+}
+`;
+
+exports[`component render data 1`] = `
+<div>
+  <div><span class="arrow arrow-down"></span><span>Books</span></div>
+  <div class="children">
+    <div>
+      <div><span class="arrow arrow-right"></span><span>Fantastic</span></div>
+      <!--v-if-->
+    </div>
+    <div>
+      <div><span class="arrow arrow-right"></span><span>Fantasy</span></div>
+      <!--v-if-->
+    </div>
+    <div>
+      <div><span class="arrow arrow-right"></span><span>Adventure</span></div>
+      <!--v-if-->
+    </div>
+  </div>
+</div>
+`;

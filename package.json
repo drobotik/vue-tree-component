@@ -1,0 +1,52 @@
+{
+  "name": "tree",
+  "version": "1.0.0",
+  "description": "Vue tree component",
+  "author": "Alex Kuperwood",
+  "scripts": {
+    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve ./example/application.js --open --mode local",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --name tree --entry ./example/application.js",
+    "test:unit": "vue-cli-service test:unit --coverage",
+    "lint": "vue-cli-service lint src example",
+    "build:doc": "vue-cli-service build ./example/application.js --dest docs --mode development",
+    "prepublishOnly": "npm run lint && npm run test:unit && npm run build:doc && npm run build",
+    "test:coverage": "vue-cli-service test:unit --coverage --verbose && codecov"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.4",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-prettier": "6.0.0",
+    "@vue/server-renderer": "^3.0.0",
+    "@vue/test-utils": "^2.0.0-beta.6",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.6.0",
+    "codecov": "^3.2.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^9.5.1",
+    "font-awesome": "^4.7.0",
+    "vue": "^3.0.1",
+    "vue-jest": "^5.0.0-alpha.5",
+    "vuex": "4.0.0-beta.4"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/kuperwood/vue-tree-component/issues"
+  },
+  "homepage": "https://github.com/kuperwood/vue-tree-component#readme",
+  "keywords": [
+    "tree"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuperwood/vue-tree-component.git"
+  }
+}
