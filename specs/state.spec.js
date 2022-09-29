@@ -79,6 +79,14 @@ describe('mutations', () => {
         expect(state.tree).toMatchSnapshot();
     })
 
+    it ('add to root tree array', async () => {
+        state.tree = [];
+        await mutations.add(state,{
+            entity: { attributes: { name:'Catherine Blum'}, children: [], properties: {} }
+        })
+        expect(state.tree).toEqual([{ attributes: { name:'Catherine Blum'}, children: [], properties: {} }])
+    })
+
     it('expand entity', () => {
         mutations.expand(state, 4)
         expect(state.tree[0].children[2].properties.expanded).toBeTruthy();
@@ -113,16 +121,25 @@ describe('mutations', () => {
         expect(state.selected).toBeNull();
     })
 
-    it('cut entity', async() => {
-        expect(state.tree[0].children[2].children[1].children).toEqual([]);
+    it('cut entity by argument', async () => {
+        state.selected = 1
         await mutations.cut(state, 5)
-        expect(state.tree).toMatchSnapshot();
+        expect(state.tree[0].children[2].children.length).toBe(2);
+        expect(state.selected).toBe(1)
     })
 
-    it('cut selected entity', async() => {
+    it( 'cut entity by selected identifier', async () => {
         state.selected = 5
         await mutations.cut(state)
-        expect(state.tree).toMatchSnapshot();
+        expect(state.tree[0].children[2].children.length).toBe(2);
+        expect(state.selected).toBeNull()
+    })
+
+    it('cut entity by selected identifier and argument', async () => {
+        state.selected = 5
+        await mutations.cut(state, 1)
+        expect(state.tree).toEqual([])
+        expect(state.selected).toBeNull();
     })
 })
 

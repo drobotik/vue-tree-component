@@ -3,8 +3,8 @@ export const search = (items, identifier, callback, siblings = false) => {
     for (let n = items.length - 1; n >= 0; n--) {
         if(items[n].identifier === identifier) {
             siblings
-              ? callback(items, n)
-              : callback(items[n])
+              ? callback instanceof Function ? callback(items, n) : null
+              : callback instanceof Function ? callback(items[n]) : null
             return true
         } else if(search(items[n].children, identifier, callback, siblings)) return true;
     }
@@ -21,7 +21,7 @@ export const deselectAll = (items) => {
 
 export const state = () => {
     return {
-        tree: {},
+        tree: [],
         selected: null
     }
 }
@@ -55,6 +55,10 @@ export const mutations = {
     },
 
     add(state, payload) {
+        if(state.tree.length === 0 || state.selected == null) {
+            state.tree.push(payload.entity)
+            return
+        }
         let identifier = payload.to ? payload.to : state.selected
         search(state.tree, identifier, (parent) => {
             parent.children.push(payload.entity)
@@ -90,6 +94,8 @@ export const mutations = {
         let cut = identifier == null ? state.selected : identifier
         search(state.tree, cut, (siblings, index) => {
             siblings.splice(index, 1)
+            if(!search(state.tree, state.selected))
+                state.selected = null
         }, true)
     }
 }

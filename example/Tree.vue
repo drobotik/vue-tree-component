@@ -1,20 +1,17 @@
 <template>
 <div>
-  <div style="margin-bottom: 30px">
-    <div>
-      <input v-model="name" type="text" placeholder="name" >
-      <button @click="add" :disabled="selected == null">Add</button>
-      <button @click="cut" :disabled="selected == null">Remove</button>
-    </div>
+  <div class="nav">
+    <input v-model="name" type="text" placeholder="name">
+    <button @click="add" :disabled="this.name === null || this.name === ''">Add</button>
+    <button @click="cut" :disabled="selected == null">Remove</button>
   </div>
   <div>
-    <node v-for="(entity, index) in tree"
-          v-bind:key="index"
+    <node v-for="entity in tree"
+          v-bind:key="entity.identifier"
           :identifier="entity.identifier"
           :attributes="entity.attributes"
           :properties="entity.properties"
-          :children="entity.children"
-    >
+          :children="entity.children">
     </node>
   </div>
 </div>
@@ -22,23 +19,9 @@
 <script>
 import { useStore } from 'vuex'
 import { computed, ref } from 'vue'
+import { createID } from "./helpers";
 import Node from '@/Node'
 import data from '../specs/data.json'
-
-const maxId = ({identifier, children = []}) => {
-  return Math.max (identifier, ...children.map(maxId))
-}
-
-export const createID = (items) => {
-  let number = 0
-  for (let n = items.length - 1; n >= 0; n--) {
-    let max = maxId(items[n])
-    if(max > number)
-      number = max
-  }
-  return number + 1
-}
-
 export default {
   name: "Tree",
   components: {
@@ -68,7 +51,8 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-
+.nav {
+  margin-bottom: 15px;
+}
 </style>

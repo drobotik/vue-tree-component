@@ -22,7 +22,9 @@
       },
       {
         "identifier": 3,
-        "attributes": {"name": "Fantasy"},
+        "attributes": {
+          "name": "Fantasy"
+        },
         "properties": {
           "expanded": false,
           "selected": false

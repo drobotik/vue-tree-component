@@ -1,109 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mutations add entity 1`] = `
-Array [
-  Object {
-    "attributes": Object {
-      "name": "Books",
-    },
-    "children": Array [
-      Object {
-        "attributes": Object {
-          "name": "Fantastic",
-        },
-        "children": Array [],
-        "identifier": 2,
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Fantasy",
-        },
-        "children": Array [],
-        "identifier": 3,
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Adventure",
-        },
-        "children": Array [
-          Object {
-            "attributes": Object {
-              "name": "Miguel de Cervantes",
-            },
-            "children": Array [
-              Object {
-                "attributes": Object {
-                  "name": "Dom Quixote",
-                },
-                "children": Array [],
-                "identifier": 6,
-                "properties": Object {
-                  "expanded": false,
-                  "selected": false,
-                },
-              },
-            ],
-            "identifier": 5,
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-          Object {
-            "attributes": Object {
-              "name": "Alexandre Dumas",
-            },
-            "children": Array [
-              Object {
-                "attributes": Object {
-                  "name": "Catherine Blum",
-                },
-                "children": Array [],
-                "properties": Object {},
-              },
-            ],
-            "identifier": 7,
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-          Object {
-            "attributes": Object {
-              "name": "Louis Stevenson",
-            },
-            "children": Array [],
-            "identifier": 8,
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-        ],
-        "identifier": 4,
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-    ],
-    "identifier": 1,
-    "properties": Object {
-      "expanded": true,
-      "selected": false,
-    },
-  },
-]
-`;
-
 exports[`mutations add to entity 1`] = `
 Array [
   Object {
@@ -165,15 +61,7 @@ Array [
             "attributes": Object {
               "name": "Alexandre Dumas",
             },
-            "children": Array [
-              Object {
-                "attributes": Object {
-                  "name": "Catherine Blum",
-                },
-                "children": Array [],
-                "properties": Object {},
-              },
-            ],
+            "children": Array [],
             "identifier": 7,
             "properties": Object {
               "expanded": false,
@@ -204,6 +92,13 @@ Array [
       "expanded": true,
       "selected": false,
     },
+  },
+  Object {
+    "attributes": Object {
+      "name": "Catherine Blum",
+    },
+    "children": Array [],
+    "properties": Object {},
   },
 ]
 `;
@@ -313,79 +208,6 @@ Array [
 `;
 
 exports[`mutations cut entity 1`] = `
-Array [
-  Object {
-    "attributes": Object {
-      "name": "Books",
-    },
-    "children": Array [
-      Object {
-        "attributes": Object {
-          "name": "Fantastic",
-        },
-        "children": Array [],
-        "identifier": 2,
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Fantasy",
-        },
-        "children": Array [],
-        "identifier": 3,
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Adventure",
-        },
-        "children": Array [
-          Object {
-            "attributes": Object {
-              "name": "Alexandre Dumas",
-            },
-            "children": Array [],
-            "identifier": 7,
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-          Object {
-            "attributes": Object {
-              "name": "Louis Stevenson",
-            },
-            "children": Array [],
-            "identifier": 8,
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-        ],
-        "identifier": 4,
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-    ],
-    "identifier": 1,
-    "properties": Object {
-      "expanded": true,
-      "selected": false,
-    },
-  },
-]
-`;
-
-exports[`mutations cut selected entity 1`] = `
 Array [
   Object {
     "attributes": Object {
