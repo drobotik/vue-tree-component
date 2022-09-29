@@ -5,7 +5,7 @@ import data from './data.json';
 describe("utils", () => {
 
     it("search", () => {
-        search(data, 'Miguel de Cervantes', function (parent) {
+        search(data, 5, function (parent) {
             expect(parent).toMatchSnapshot();
         });
     })
@@ -27,6 +27,10 @@ describe("state", () => {
     it("tree", () => {
         expect(state().hasOwnProperty("tree")).toBeTruthy()
     })
+
+    it("selected", () => {
+        expect(state().hasOwnProperty("selected")).toBeTruthy()
+    })
 })
 
 describe("getters", () => {
@@ -36,13 +40,22 @@ describe("getters", () => {
         const result = getters.tree(state)
         expect(result).toBe(state.tree)
     });
+
+    it('tree', () => {
+        const state = { selected: 1 }
+        const result = getters.selected(state)
+        expect(result).toBe(state.selected)
+    });
 })
 
 describe('mutations', () => {
 
     let state
     beforeEach(() => {
-        state = { tree : JSON.parse(JSON.stringify(data)) }
+        state = {
+            tree : JSON.parse(JSON.stringify(data)),
+            selected: null
+        }
     });
 
     it('set tree data', () => {
@@ -50,29 +63,46 @@ describe('mutations', () => {
         expect(state.tree).toEqual('two')
     })
 
-    it('add entity', async () => {
+    it('add to entity', async () => {
         await mutations.add(state,{
-            to:"Alexandre Dumas",
+            to: 7,
+            entity: { attributes: { name:'Catherine Blum'}, children: [], properties: {} }
+        })
+        expect(state.tree).toMatchSnapshot();
+    })
+
+    it('add to selected entity', async () => {
+        state.selected = 2
+        await mutations.add(state,{
             entity: { attributes: { name:'Catherine Blum'}, children: [], properties: {} }
         })
         expect(state.tree).toMatchSnapshot();
     })
 
     it('expand entity', () => {
-        mutations.expand(state, "Adventure")
+        mutations.expand(state, 4)
         expect(state.tree[0].children[2].properties.expanded).toBeTruthy();
-        mutations.expand(state, "Adventure")
+        mutations.expand(state, 4)
         expect(state.tree[0].children[2].properties.expanded).toBeFalsy();
     })
 
     it('select entity', () => {
-        mutations.select(state, "Adventure")
+        expect(state.selected).toBeNull();
+        mutations.select(state, 4)
         expect(state.tree[0].children[2].properties.selected).toBeTruthy();
-        mutations.select(state, "Fantastic")
+        expect(state.selected).toBe(4);
+        mutations.select(state, 2)
+        expect(state.tree[0].children[2].properties.selected).toBeFalsy();
         expect(state.tree[0].children[0].properties.selected).toBeTruthy();
+        expect(state.selected).toBe(2);
+        // select same (deselect)
+        mutations.select(state, 2)
+        expect(state.tree[0].children[0].properties.selected).toBeFalsy();
+        expect(state.selected).toBeNull();
     })
 
     it('deselect all entities', () => {
+        state.selected = 2
         state.tree[0].properties.selected = true;
         state.tree[0].children[2].properties.selected = true;
         state.tree[0].children[2].children[0].properties.selected = true;
@@ -80,11 +110,18 @@ describe('mutations', () => {
         expect(state.tree[0].properties.selected).toBeFalsy();
         expect(state.tree[0].children[2].properties.selected).toBeFalsy();
         expect(state.tree[0].children[2].children[0].properties.selected).toBeFalsy();
+        expect(state.selected).toBeNull();
     })
 
     it('cut entity', async() => {
         expect(state.tree[0].children[2].children[1].children).toEqual([]);
-        await mutations.cut(state, "Miguel de Cervantes")
+        await mutations.cut(state, 5)
+        expect(state.tree).toMatchSnapshot();
+    })
+
+    it('cut selected entity', async() => {
+        state.selected = 5
+        await mutations.cut(state)
         expect(state.tree).toMatchSnapshot();
     })
 })
@@ -104,31 +141,27 @@ describe("actions", () => {
     })
 
     it("add entity", done => {
-        const payload = {to:"Test", entity: {children:[]}}
+        const payload = {to:1, entity: {children:[]}}
         testAction(actions.add, payload, state, [
             { type: 'add', payload },
         ], done)
     })
 
     it("toggle entity", done => {
-        const name = "Test"
-        testAction(actions.expand, name, state, [
-            { type: 'expand', payload: name },
+        testAction(actions.expand, 1, state, [
+            { type: 'expand', payload: 1 },
         ], done)
     })
 
     it("select entity", done => {
-        const name = "Test"
-        testAction(actions.select, name, state, [
-            { type: 'deselectAll', payload: undefined },
-            { type: 'select', payload: name },
+        testAction(actions.select, 1, state, [
+            { type: 'select', payload: 1 },
         ], done)
     })
 
     it("cut entity", done => {
-        const name = "Test"
-        testAction(actions.cut, name, state, [
-            { type: 'cut', payload: name },
+        testAction(actions.cut, 1, state, [
+            { type: 'cut', payload: 1 },
         ], done)
     })
 })

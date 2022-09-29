@@ -1,5 +1,6 @@
 [
   {
+    "identifier": 1,
     "attributes": {
       "name": "Books"
     },
@@ -9,6 +10,7 @@
     },
     "children": [
       {
+        "identifier": 2,
         "attributes": {
           "name": "Fantastic"
         },
@@ -19,6 +21,7 @@
         "children":  []
       },
       {
+        "identifier": 3,
         "attributes": {"name": "Fantasy"},
         "properties": {
           "expanded": false,
@@ -26,6 +29,7 @@
         },
         "children":  []},
       {
+        "identifier": 4,
         "attributes": {
           "name": "Adventure"
         },
@@ -35,6 +39,7 @@
         },
         "children":  [
           {
+            "identifier": 5,
             "attributes": {
               "name": "Miguel de Cervantes"
             },
@@ -44,6 +49,7 @@
             },
             "children":  [
               {
+                "identifier": 6,
                 "attributes": {
                   "name": "Dom Quixote"
                 },
@@ -56,6 +62,7 @@
             ]
           },
           {
+            "identifier": 7,
             "attributes": {
               "name": "Alexandre Dumas"
             },
@@ -66,6 +73,7 @@
             "children":  []
           },
           {
+            "identifier": 8,
             "attributes": {
               "name": "Louis Stevenson"
             },

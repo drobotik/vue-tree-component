@@ -5,6 +5,7 @@ Object {
   "attributes": Object {},
   "children": Array [],
   "depth": 0,
+  "identifier": null,
   "properties": Object {
     "expanded": false,
     "selected": false,
@@ -14,22 +15,22 @@ Object {
 
 exports[`component render data 1`] = `
 <div>
-  <div><span class="arrow arrow-down"></span><span>Books</span></div>
+  <div><span class="arrow arrow-down"></span><span class="name">Books</span></div>
   <div class="children">
     <div>
       <div>
-        <!--v-if--><span>Fantastic</span>
+        <!--v-if--><span class="name">Fantastic</span>
       </div>
       <!--v-if-->
     </div>
     <div>
       <div>
-        <!--v-if--><span>Fantasy</span>
+        <!--v-if--><span class="name">Fantasy</span>
       </div>
       <!--v-if-->
     </div>
     <div>
-      <div><span class="arrow arrow-right"></span><span>Adventure</span></div>
+      <div><span class="arrow arrow-right"></span><span class="name">Adventure</span></div>
       <!--v-if-->
     </div>
   </div>

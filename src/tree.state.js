@@ -1,12 +1,12 @@
 import {createStore} from 'vuex'
-export const search = (items, name, callback, siblings = false) => {
+export const search = (items, identifier, callback, siblings = false) => {
     for (let n = items.length - 1; n >= 0; n--) {
-        if(items[n].attributes.name === name) {
+        if(items[n].identifier === identifier) {
             siblings
               ? callback(items, n)
               : callback(items[n])
             return true
-        } else if(search(items[n].children, name, callback, siblings)) return true;
+        } else if(search(items[n].children, identifier, callback, siblings)) return true;
     }
     return false
 }
@@ -21,12 +21,14 @@ export const deselectAll = (items) => {
 
 export const state = () => {
     return {
-        tree: {}
+        tree: {},
+        selected: null
     }
 }
 
 export const getters = {
-    tree: state => state.tree
+    tree: state => state.tree,
+    selected: state => state.selected
 }
 
 export const actions = {
@@ -36,15 +38,14 @@ export const actions = {
     add({commit}, payload) {
         commit('add', payload)
     },
-    expand({commit}, name) {
-        commit('expand', name)
+    expand({commit}, identifier) {
+        commit('expand', identifier)
     },
-    select({commit}, name) {
-        commit('deselectAll')
-        commit('select', name)
+    select({commit}, identifier) {
+        commit('select', identifier)
     },
-    cut({commit}, name) {
-        commit('cut', name)
+    cut({commit}, identifier) {
+        commit('cut', identifier)
     }
 }
 
@@ -54,29 +55,40 @@ export const mutations = {
     },
 
     add(state, payload) {
-        search(state.tree, payload.to, (parent) => {
+        let identifier = payload.to ? payload.to : state.selected
+        search(state.tree, identifier, (parent) => {
             parent.children.push(payload.entity)
         })
     },
 
-    expand(state, name) {
-        search(state.tree, name, (parent) => {
+    expand(state, identifier) {
+        search(state.tree, identifier, (parent) => {
             parent.properties.expanded = !parent.properties.expanded
         })
     },
 
     deselectAll(state) {
         deselectAll(state.tree)
+        state.selected = null
     },
 
-    select(state, name) {
-        search(state.tree, name, (parent) => {
+    select(state, identifier) {
+        deselectAll(state.tree)
+        search(state.tree, identifier, (parent) => {
+            if(parent.identifier === state.selected) {
+                state.selected = null
+                parent.properties.selected = false
+                return
+            }
             parent.properties.selected = !parent.properties.selected
+            if(parent.properties.selected)
+                state.selected = parent.identifier;
         })
     },
 
-    cut(state, name) {
-        search(state.tree, name, (siblings, index) => {
+    cut(state, identifier = null) {
+        let cut = identifier == null ? state.selected : identifier
+        search(state.tree, cut, (siblings, index) => {
             siblings.splice(index, 1)
         }, true)
     }

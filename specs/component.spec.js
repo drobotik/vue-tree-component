@@ -4,9 +4,10 @@ import data from './data.json';
 
 describe( "component", () => {
     const props = {
-        properties: { expanded: false },
+        identifier: 33,
+        properties: { expanded: false, selected: false },
         attributes: { name: 'the name'},
-        children: [ {properties: { expanded: false } } ]
+        children: [ {properties: { expanded: false, selected: false  } } ]
     }
 
     it("default properties", () => {
@@ -48,7 +49,31 @@ describe( "component", () => {
         const node = mount(component, {global: { mocks: { $store } }, props})
         await node.find('.arrow').trigger('click')
         expect($store.dispatch).toHaveBeenCalledTimes(1);
-        expect($store.dispatch).toHaveBeenCalledWith('expand', 'the name')
+        expect($store.dispatch).toHaveBeenCalledWith('expand', props.identifier)
+    })
+
+    it('selected classes', async () => {
+        const $store = { dispatch: jest.fn()}
+        const node = mount(component, {global: {mocks: { $store }}})
+        expect(node.find('.name').exists()).toBeTruthy()
+        expect(node.find('.name').classes('selected')).toBeFalsy()
+        await node.setProps({ properties: { selected: true }, attributes: { name: 'test'}, children: [{}] })
+        expect(node.find('.name').classes('selected')).toBeTruthy()
+    })
+
+    it('select event', async () => {
+        const $store = { dispatch: jest.fn()}
+        const mockMethod = jest.spyOn(component.methods, 'select')
+        await mount(component,{global: { mocks: { $store } }, props}).find('.name').trigger('click')
+        expect(mockMethod).toHaveBeenCalledTimes(1);
+    })
+
+    it('select method', async () => {
+        const $store = { dispatch: jest.fn() }
+        const node = mount(component, {global: { mocks: { $store } }, props})
+        await node.find('.name').trigger('click')
+        expect($store.dispatch).toHaveBeenCalledTimes(1);
+        expect($store.dispatch).toHaveBeenCalledWith('select', props.identifier)
     })
 
     it("render data", () => {

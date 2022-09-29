@@ -1,178 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-Array [
-  Object {
-    "attributes": Object {
-      "name": "Books",
-    },
-    "children": Array [
-      Object {
-        "attributes": Object {
-          "name": "Fantastic",
-        },
-        "children": Array [],
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Fantasy",
-        },
-        "children": Array [],
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Adventure",
-        },
-        "children": Array [
-          Object {
-            "attributes": Object {
-              "name": "Miguel de Cervantes",
-            },
-            "children": Array [
-              Object {
-                "attributes": Object {
-                  "name": "Dom Quixote",
-                },
-                "children": Array [],
-                "properties": Object {
-                  "expanded": false,
-                  "selected": false,
-                },
-              },
-            ],
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-          Object {
-            "attributes": Object {
-              "name": "Alexandre Dumas",
-            },
-            "children": Array [
-              Object {
-                "attributes": Object {
-                  "name": "Catherine Blum",
-                },
-                "children": Array [],
-                "properties": Object {},
-              },
-            ],
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-          Object {
-            "attributes": Object {
-              "name": "Louis Stevenson",
-            },
-            "children": Array [],
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-        ],
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-    ],
-    "properties": Object {
-      "expanded": true,
-      "selected": false,
-    },
-  },
-]
-`;
-
-exports[` 2`] = `
-Array [
-  Object {
-    "attributes": Object {
-      "name": "Books",
-    },
-    "children": Array [
-      Object {
-        "attributes": Object {
-          "name": "Fantastic",
-        },
-        "children": Array [],
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Fantasy",
-        },
-        "children": Array [],
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-      Object {
-        "attributes": Object {
-          "name": "Adventure",
-        },
-        "children": Array [
-          Object {
-            "attributes": Object {
-              "name": "Alexandre Dumas",
-            },
-            "children": Array [
-              Object {
-                "attributes": Object {
-                  "name": "Catherine Blum",
-                },
-                "children": Array [],
-                "properties": Object {
-                  "selected": false,
-                },
-              },
-            ],
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-          Object {
-            "attributes": Object {
-              "name": "Louis Stevenson",
-            },
-            "children": Array [],
-            "properties": Object {
-              "expanded": false,
-              "selected": false,
-            },
-          },
-        ],
-        "properties": Object {
-          "expanded": false,
-          "selected": false,
-        },
-      },
-    ],
-    "properties": Object {
-      "expanded": true,
-      "selected": false,
-    },
-  },
-]
-`;
-
 exports[`mutations add entity 1`] = `
 Array [
   Object {
@@ -185,6 +12,7 @@ Array [
           "name": "Fantastic",
         },
         "children": Array [],
+        "identifier": 2,
         "properties": Object {
           "expanded": false,
           "selected": false,
@@ -195,6 +23,7 @@ Array [
           "name": "Fantasy",
         },
         "children": Array [],
+        "identifier": 3,
         "properties": Object {
           "expanded": false,
           "selected": false,
@@ -215,12 +44,14 @@ Array [
                   "name": "Dom Quixote",
                 },
                 "children": Array [],
+                "identifier": 6,
                 "properties": Object {
                   "expanded": false,
                   "selected": false,
                 },
               },
             ],
+            "identifier": 5,
             "properties": Object {
               "expanded": false,
               "selected": false,
@@ -239,6 +70,7 @@ Array [
                 "properties": Object {},
               },
             ],
+            "identifier": 7,
             "properties": Object {
               "expanded": false,
               "selected": false,
@@ -249,18 +81,229 @@ Array [
               "name": "Louis Stevenson",
             },
             "children": Array [],
+            "identifier": 8,
             "properties": Object {
               "expanded": false,
               "selected": false,
             },
           },
         ],
+        "identifier": 4,
         "properties": Object {
           "expanded": false,
           "selected": false,
         },
       },
     ],
+    "identifier": 1,
+    "properties": Object {
+      "expanded": true,
+      "selected": false,
+    },
+  },
+]
+`;
+
+exports[`mutations add to entity 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "name": "Books",
+    },
+    "children": Array [
+      Object {
+        "attributes": Object {
+          "name": "Fantastic",
+        },
+        "children": Array [],
+        "identifier": 2,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+      Object {
+        "attributes": Object {
+          "name": "Fantasy",
+        },
+        "children": Array [],
+        "identifier": 3,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+      Object {
+        "attributes": Object {
+          "name": "Adventure",
+        },
+        "children": Array [
+          Object {
+            "attributes": Object {
+              "name": "Miguel de Cervantes",
+            },
+            "children": Array [
+              Object {
+                "attributes": Object {
+                  "name": "Dom Quixote",
+                },
+                "children": Array [],
+                "identifier": 6,
+                "properties": Object {
+                  "expanded": false,
+                  "selected": false,
+                },
+              },
+            ],
+            "identifier": 5,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+          Object {
+            "attributes": Object {
+              "name": "Alexandre Dumas",
+            },
+            "children": Array [
+              Object {
+                "attributes": Object {
+                  "name": "Catherine Blum",
+                },
+                "children": Array [],
+                "properties": Object {},
+              },
+            ],
+            "identifier": 7,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+          Object {
+            "attributes": Object {
+              "name": "Louis Stevenson",
+            },
+            "children": Array [],
+            "identifier": 8,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+        ],
+        "identifier": 4,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+    ],
+    "identifier": 1,
+    "properties": Object {
+      "expanded": true,
+      "selected": false,
+    },
+  },
+]
+`;
+
+exports[`mutations add to selected entity 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "name": "Books",
+    },
+    "children": Array [
+      Object {
+        "attributes": Object {
+          "name": "Fantastic",
+        },
+        "children": Array [
+          Object {
+            "attributes": Object {
+              "name": "Catherine Blum",
+            },
+            "children": Array [],
+            "properties": Object {},
+          },
+        ],
+        "identifier": 2,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+      Object {
+        "attributes": Object {
+          "name": "Fantasy",
+        },
+        "children": Array [],
+        "identifier": 3,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+      Object {
+        "attributes": Object {
+          "name": "Adventure",
+        },
+        "children": Array [
+          Object {
+            "attributes": Object {
+              "name": "Miguel de Cervantes",
+            },
+            "children": Array [
+              Object {
+                "attributes": Object {
+                  "name": "Dom Quixote",
+                },
+                "children": Array [],
+                "identifier": 6,
+                "properties": Object {
+                  "expanded": false,
+                  "selected": false,
+                },
+              },
+            ],
+            "identifier": 5,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+          Object {
+            "attributes": Object {
+              "name": "Alexandre Dumas",
+            },
+            "children": Array [],
+            "identifier": 7,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+          Object {
+            "attributes": Object {
+              "name": "Louis Stevenson",
+            },
+            "children": Array [],
+            "identifier": 8,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+        ],
+        "identifier": 4,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+    ],
+    "identifier": 1,
     "properties": Object {
       "expanded": true,
       "selected": false,
@@ -281,6 +324,7 @@ Array [
           "name": "Fantastic",
         },
         "children": Array [],
+        "identifier": 2,
         "properties": Object {
           "expanded": false,
           "selected": false,
@@ -291,6 +335,7 @@ Array [
           "name": "Fantasy",
         },
         "children": Array [],
+        "identifier": 3,
         "properties": Object {
           "expanded": false,
           "selected": false,
@@ -306,6 +351,7 @@ Array [
               "name": "Alexandre Dumas",
             },
             "children": Array [],
+            "identifier": 7,
             "properties": Object {
               "expanded": false,
               "selected": false,
@@ -316,18 +362,94 @@ Array [
               "name": "Louis Stevenson",
             },
             "children": Array [],
+            "identifier": 8,
             "properties": Object {
               "expanded": false,
               "selected": false,
             },
           },
         ],
+        "identifier": 4,
         "properties": Object {
           "expanded": false,
           "selected": false,
         },
       },
     ],
+    "identifier": 1,
+    "properties": Object {
+      "expanded": true,
+      "selected": false,
+    },
+  },
+]
+`;
+
+exports[`mutations cut selected entity 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "name": "Books",
+    },
+    "children": Array [
+      Object {
+        "attributes": Object {
+          "name": "Fantastic",
+        },
+        "children": Array [],
+        "identifier": 2,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+      Object {
+        "attributes": Object {
+          "name": "Fantasy",
+        },
+        "children": Array [],
+        "identifier": 3,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+      Object {
+        "attributes": Object {
+          "name": "Adventure",
+        },
+        "children": Array [
+          Object {
+            "attributes": Object {
+              "name": "Alexandre Dumas",
+            },
+            "children": Array [],
+            "identifier": 7,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+          Object {
+            "attributes": Object {
+              "name": "Louis Stevenson",
+            },
+            "children": Array [],
+            "identifier": 8,
+            "properties": Object {
+              "expanded": false,
+              "selected": false,
+            },
+          },
+        ],
+        "identifier": 4,
+        "properties": Object {
+          "expanded": false,
+          "selected": false,
+        },
+      },
+    ],
+    "identifier": 1,
     "properties": Object {
       "expanded": true,
       "selected": false,
@@ -347,12 +469,14 @@ Object {
         "name": "Dom Quixote",
       },
       "children": Array [],
+      "identifier": 6,
       "properties": Object {
         "expanded": false,
         "selected": false,
       },
     },
   ],
+  "identifier": 5,
   "properties": Object {
     "expanded": false,
     "selected": false,
