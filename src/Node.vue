@@ -12,7 +12,6 @@
       :attributes="entity.attributes"
       :children="entity.children"
       :properties="entity.properties"
-      :depth="depth + 1"
     >
     </node>
   </div>
@@ -45,10 +44,6 @@ export default {
     children: {
       type: Array,
       default: () => { return [] }
-    },
-    depth: {
-      type: Number,
-      default: () => { return 0 }
     }
   },
   setup(props) {
@@ -82,15 +77,15 @@ export default {
   padding-left: 15px;
 }
 .arrow {
-  cursor: crosshair;
+  cursor: pointer;
   outline: 0;
   padding: 5px 10px 5px 5px;
 }
 .arrow-right {
-  background: url("./assets/caret-right-fill.png") no-repeat center right;
+  background: url("../assets/caret-right-fill.png") no-repeat center right;
 }
 .arrow-down {
-  background: url("./assets/caret-down-fill.png") no-repeat center right;
+  background: url("../assets/caret-down-fill.png") no-repeat center right;
 }
 .name {
   cursor: pointer;

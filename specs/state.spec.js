@@ -5,8 +5,8 @@ import data from './data.json';
 describe("utils", () => {
 
     it("search", () => {
-        search(data, 5, function (parent) {
-            expect(parent).toMatchSnapshot();
+        search(data, 5, function (entity) {
+            expect(entity).toEqual(data[0].children[2].children[0])
         });
     })
 
@@ -65,10 +65,11 @@ describe('mutations', () => {
 
     it('add to entity', async () => {
         await mutations.add(state,{
-            to: 7,
+            to: 2,
             entity: { attributes: { name:'Catherine Blum'}, children: [], properties: {} }
         })
-        expect(state.tree).toMatchSnapshot();
+        expect(state.tree[0].children[0].children[0])
+          .toEqual({ attributes: { name:'Catherine Blum'}, children: [], properties: {} });
     })
 
     it('add to selected entity', async () => {
@@ -76,7 +77,8 @@ describe('mutations', () => {
         await mutations.add(state,{
             entity: { attributes: { name:'Catherine Blum'}, children: [], properties: {} }
         })
-        expect(state.tree).toMatchSnapshot();
+        expect(state.tree[0].children[0].children[0])
+          .toEqual({ attributes: { name:'Catherine Blum'}, children: [], properties: {} });
     })
 
     it ('add to root tree array', async () => {

@@ -4,7 +4,6 @@ exports[`component default properties 1`] = `
 Object {
   "attributes": Object {},
   "children": Array [],
-  "depth": 0,
   "identifier": null,
   "properties": Object {
     "expanded": false,

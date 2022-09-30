@@ -1,10 +1,9 @@
 import {createStore} from 'vuex'
-export const search = (items, identifier, callback, siblings = false) => {
+export const search = (items, identifier, callback = null, siblings = false) => {
     for (let n = items.length - 1; n >= 0; n--) {
         if(items[n].identifier === identifier) {
-            siblings
-              ? callback instanceof Function ? callback(items, n) : null
-              : callback instanceof Function ? callback(items[n]) : null
+            if(callback instanceof Function)
+                siblings ? callback(items, n) : callback(items[n])
             return true
         } else if(search(items[n].children, identifier, callback, siblings)) return true;
     }
@@ -55,19 +54,21 @@ export const mutations = {
     },
 
     add(state, payload) {
-        if(state.tree.length === 0 || state.selected == null) {
+        let identifier = payload.to ? payload.to : state.selected
+
+        if(state.tree.length === 0 || identifier == null) {
             state.tree.push(payload.entity)
             return
         }
-        let identifier = payload.to ? payload.to : state.selected
-        search(state.tree, identifier, (parent) => {
-            parent.children.push(payload.entity)
+
+        search(state.tree, identifier, (entity) => {
+            entity.children.push(payload.entity)
         })
     },
 
     expand(state, identifier) {
-        search(state.tree, identifier, (parent) => {
-            parent.properties.expanded = !parent.properties.expanded
+        search(state.tree, identifier, (entity) => {
+            entity.properties.expanded = !entity.properties.expanded
         })
     },
 
@@ -78,15 +79,14 @@ export const mutations = {
 
     select(state, identifier) {
         deselectAll(state.tree)
-        search(state.tree, identifier, (parent) => {
-            if(parent.identifier === state.selected) {
+        search(state.tree, identifier, (entity) => {
+            if(entity.identifier === state.selected) {
                 state.selected = null
-                parent.properties.selected = false
+                entity.properties.selected = false
                 return
             }
-            parent.properties.selected = !parent.properties.selected
-            if(parent.properties.selected)
-                state.selected = parent.identifier;
+            entity.properties.selected = true
+            state.selected = entity.identifier;
         })
     },
 
