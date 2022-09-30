@@ -4,8 +4,8 @@
   "description": "Vue tree component",
   "author": "Alex Kuperwood",
   "scripts": {
-    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve ./example/application.js --open --mode local",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --name tree --entry ./example/application.js",
+    "serve": "vue-cli-service serve ./example/application.js --open --mode local",
+    "build": "vue-cli-service build --name tree --entry ./example/application.js",
     "test:unit": "vue-cli-service test:unit --coverage",
     "lint": "vue-cli-service lint src example",
     "build:doc": "vue-cli-service build ./example/application.js --dest docs --mode development",
