@@ -4,6 +4,7 @@
     <input v-model="name" type="text" placeholder="name">
     <button @click="add" :disabled="this.name === null || this.name === ''">Add</button>
     <button @click="cut" :disabled="selected == null">Remove</button>
+    <button @click="dump=!dump">Data</button>
   </div>
   <div>
     <node v-for="entity in tree"
@@ -14,6 +15,7 @@
           :children="entity.children">
     </node>
   </div>
+  <pre v-if="dump" class="dump">{{tree}}</pre>
 </div>
 </template>
 <script>
@@ -31,6 +33,7 @@ export default {
     const store = useStore()
     store.dispatch("tree", data)
     return {
+      dump: ref(false),
       name: ref(null),
       tree: computed(() => store.getters.tree),
       selected: computed(() => store.getters.selected),
@@ -54,5 +57,8 @@ export default {
 <style scoped>
 .nav {
   margin-bottom: 15px;
+}
+.dump {
+  font-size: 10px;
 }
 </style>
